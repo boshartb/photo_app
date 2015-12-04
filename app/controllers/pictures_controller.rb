@@ -7,7 +7,7 @@ class PicturesController < ApplicationController
   def new
     @picture = Picture.new
   end
- 
+
   def create
     @picture = Picture.new(picture_params)
     if @picture.save
@@ -20,8 +20,15 @@ class PicturesController < ApplicationController
   def show
     @picture = Picture.find(params[:id])
   end
+
   def edit
     @picture = Picture.find(params[:id])
+  end
+  
+  def destroy
+    @picture = Picture.find(params[:id])
+    @picture.destroy
+    redirect_to pictures_url
   end
 
   def update
